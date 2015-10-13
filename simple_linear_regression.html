@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Simple linear regression </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Hide",showFeedback:"Show Feedback",hideFeedback:"Hide Feedback",correct:"Correct",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">R: a first course</a></li>
+   <li><a href="data_management_and_descriptive_statistics.html" class="daddy">Data management and descriptive statistics</a>
+   <ul class="other-section">
+      <li><a href="r_and_rstudio.html" class="no-ch">R and RStudio</a></li>
+      <li><a href="help.html" class="no-ch">Help</a></li>
+      <li><a href="the_interface.html" class="no-ch">The interface</a></li>
+      <li><a href="add_on_packages.html" class="no-ch">Add on packages</a></li>
+      <li><a href="basic_command_line_statements.html" class="no-ch">Basic command line statements</a></li>
+      <li><a href="importing_datasets.html" class="no-ch">Importing datasets</a></li>
+      <li><a href="some_r_data_structures_and_data_selection.html" class="daddy">Some R data structures and data selection</a>
+      <ul class="other-section">
+         <li><a href="vectors.html" class="no-ch">Vectors</a></li>
+         <li><a href="matrices.html" class="no-ch">Matrices</a></li>
+         <li><a href="data_frames.html" class="no-ch">Data frames</a></li>
+         <li><a href="first_task.html" class="no-ch">First task</a></li>
+      </ul>
+      </li>
+      <li><a href="basic_data_manipulation_routines_in_r.html" class="daddy">Basic data manipulation routines in R</a>
+      <ul class="other-section">
+         <li><a href="deriving_new_variables_from_existing_data.html" class="no-ch">Deriving new variables from existing data</a></li>
+         <li><a href="transforming_variables.html" class="daddy">Transforming variables</a>
+         <ul class="other-section">
+            <li><a href="creating_ordinals_from_continuous_data.html" class="no-ch">Creating ordinals from continuous data</a></li>
+            <li><a href="using_log_transformation_of_skewed_data.html" class="no-ch">Using log transformation of skewed data</a></li>
+         </ul>
+         </li>
+         <li><a href="factors_levels_and_labels.html" class="no-ch">Factors, levels and labels</a></li>
+         <li><a href="second_task.html" class="no-ch">Second task</a></li>
+      </ul>
+      </li>
+      <li><a href="summary_statistics.html" class="daddy">Summary statistics</a>
+      <ul class="other-section">
+         <li><a href="third_task.html" class="no-ch">Third task</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="plotting.html" class="daddy">Plotting</a>
+   <ul class="other-section">
+      <li><a href="basics_of_plotting.html" class="no-ch">Basics of plotting</a></li>
+      <li><a href="ggplot.html" class="no-ch">ggplot</a></li>
+   </ul>
+   </li>
+   <li><a href="testing.html" class="daddy">Testing</a>
+   <ul class="other-section">
+      <li><a href="the_ttest.html" class="daddy">The t-test</a>
+      <ul class="other-section">
+         <li><a href="the_independent_samples_ttest.html" class="no-ch">The independent samples t-test</a></li>
+         <li><a href="the_paired_ttest.html" class="no-ch">The paired t-test</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="anova.html" class="no-ch">ANOVA</a></li>
+   <li class="current-page-parent"><a href="regression.html" class="current-page-parent daddy">Regression</a>
+   <ul>
+      <li id="active"><a href="simple_linear_regression.html" class="active no-ch">Simple linear regression</a></li>
+      <li><a href="multiple_regression.html" class="no-ch">Multiple regression</a></li>
+      <li><a href="categorical_predictors.html" class="no-ch">Categorical predictors</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="regression.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="multiple_regression.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Simple linear regression</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id47">
+<div class="iDevice emphasis0">
+<div id="ta47_85" class="block iDevice_content">
+<h2>Regression and the line</h2>
+<p>A common case is simple linear regression where both the dependent and independent are continuous variables and the relationship is linear, that is to say the dependent values are a linear combination of the independent variables and any constant parameters.  So, the relationship is expressed for example in the equation for a line</p>
+<p><img src="eXe_LaTeX_math_5.gif"  height="19" width="120" /></p>
+<p>where <em>m</em> is one coefficient, b another and the bracketed term <img  src="eXe_LaTeX_math_7.gif" height="8" width="8" />is error or noise.  I bracket this last term because we will not include it in our model.   You can read about the properties of the error term on <a target="_blank" href="https://en.wikibooks.org/wiki/Econometric_Theory/Classical_Normal_Linear_Regression_Model_%28CNLRM%29">this wikibook page that introduces the linear regression model</a>.</p>
+<p>It is sometimes easy to forget that the <em>slope</em> coefficient is the rate of change of the conditional mean, the <em>expected</em> value of <em>y</em> rather than the rate of change in the response variable itself.</p>
+<p>In general, then the coefficients of the equation are</p>
+<table border="0">
+<tbody>
+<tr>
+<td><em>m</em></td>
+<td>the slope or gradient of the line</td>
+</tr>
+<tr>
+<td><em>b</em></td>
+<td>the intercept or the average value of <em>y</em> when <em>x</em> is zero</td>
+</tr>
+</tbody>
+</table>
+<h3>Visualising the relationship</h3>
+<p>This is a scatter plot of one continuous variable (students' scores on a history exam) plotted against another (students' scores on an English exam).</p>
+<p><img src="EHSCATTER.png" height="519" width="580" /></p>
+<p>As we look at this graph, we can imagine trying to fit a straight line through the observed data points.  Of course, there are a number of candidate lines.  For the purposes of simple linear regression, we choose as the best line the one that <em>minimizes the squares of the residuals</em> where a residual is the difference between the value on the line at some value of <em>x</em> and the observed value of <em>y</em> at that point.  This line is a candidate for the <em>best fit</em> of a straight line through the data.  Here is the fitted line</p>
+<p><img src="ehtrend.png" height="519" width="580" /></p>
+<h3>What does it mean?</h3>
+<p>Intuitively, this line looks like a good fit.  The data points are mostly quite closely clustered around the line with a small number of larger residuals.  We could probably estimate the slope of the line - it looks to be close to one at a first approximation.</p>
+<p>However, you will need to</p>
+<ul>
+<li>calculate the coefficients more accurately</li>
+<li>demonstrate that the relationship represented by the <em>slope</em> coefficient is significant</li>
+</ul>
+<p>The first issue is dealt with by using the least squares method to find the line of best fit through the data and then calculating the slope of that line as <img style="vertical-align: text-bottom;" src="eXe_LaTeX_math_0.gif"  height="30" width="24" />.</p>
+<p>The second is dealt with by calculating a <em>t</em> statistic for the slope and finding <em>p(t)</em>.</p>
+<p>Fortunately, R will do all this for us.</p>
+<h2>Linear Regression with R</h2>
+<p>First, you should watch this <a target="_blank" href="https://youtu.be/66z_MRwtFJM">short video tutorial on linear regression with R</a>.</p>
+<p>The commands that we need to carry out the regression analysis are</p>
+<p>cor(x,y)</p>
+<p>lm(dependent_variable, independent_variable)</p>
+<p>plot(independent_variable, dependent_variable)</p>
+<p>abline(model)</p>
+<p>summary(mod)</p>
+<p>anova(mod)</p>
+<h2>Supplementary reading</h2>
+<p>If you would like to read a description of the regression procedure in R there is <a target="_blank" href="http://www.r-bloggers.com/simple-linear-regression-2/">one at R Bloggers</a>.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper ReflectionIdevice em_iDevice" id="id51">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Running a regression model</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta51_92" class="block iDevice_content">
+<p>Load the dataset MedicalXTrial which is in Stata format on the website <span style="text-decoration: underline;"><a href="http://www.ucl.ac.uk/~ccaajim">http://www.ucl.ac.uk/~ccaajim</a>.</span></p>
+<p>This dataset contains some demographic data about eighty six subjects, including their age, and two measures of the plasma concentration of a hormone - one before treatment and one after treatment. </p>
+<p>Check carefully the data types of the variables in the data set.  Correct any incorrect data types.Generate a variable <em>dh</em> which is the difference between the plasma concentration of <em>h</em> before and after treatment.Test for any correlation between <em>age</em> and <em>dh</em>.Fit a linear model regressing <em>dh</em> against <em>age</em> (that is to say with <em>dh</em> as the independent variable).Make a scatter plot with <em>age</em> on the x axis and <em>dh</em> on the y axis.Add a fitted least squares line to the scatter plot.From the summary of your regression model extract</p>
+<ul>
+<li>the intercept and slope coefficients of the equation for the line</li>
+<li>the value F and its p value and degrees of freedom</li>
+<li>the value R<sup>2</sup></li>
+<li>the t statistics for the slope and its p value</li>
+</ul>
+</div>
+<form name="feedback-form-51" action="#" onsubmit="return false" class="feedback-form">
+<div class="block iDevice_buttons feedback-button js-required">
+<p><input type="button" name="toggle-feedback-51" value="Show Feedback" class="feedbackbutton" onclick="$exe.toggleFeedback(this,true);return false" /></p>
+</div>
+<section id="feedback-51" class="feedback js-feedback js-hidden">
+<h1 class="js-sr-av">Feedback</h1>
+<div id="ta51_93" class="block iDevice_content">
+<p>df&lt;-read.dta("http://www.ucl.ac.uk/~ccaajim/medicaltrialX.dta")</p>
+<p>df$age&lt;-as.numeric(age)</p>
+<p>df$income&lt;-as.numeric(income)</p>
+<p>df$dh&lt;-hafter-hbefore</p>
+<p>cor.test(age,dh)</p>
+<p>plot(age,dh)</p>
+<p>mod&lt;-lm(dh~age)</p>
+<p>abline(reg=mod)</p>
+<p>summary(mod)</p>
+<p>coef(mod)</p>
+</div>
+</section>
+</form>
+</div>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="regression.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="multiple_regression.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+</div>
+</body></html>

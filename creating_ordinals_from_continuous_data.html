@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Creating ordinals from continuous data </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Hide",showFeedback:"Show Feedback",hideFeedback:"Hide Feedback",correct:"Correct",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">R: a first course</a></li>
+   <li class="current-page-parent"><a href="data_management_and_descriptive_statistics.html" class="current-page-parent daddy">Data management and descriptive statistics</a>
+   <ul>
+      <li><a href="r_and_rstudio.html" class="no-ch">R and RStudio</a></li>
+      <li><a href="help.html" class="no-ch">Help</a></li>
+      <li><a href="the_interface.html" class="no-ch">The interface</a></li>
+      <li><a href="add_on_packages.html" class="no-ch">Add on packages</a></li>
+      <li><a href="basic_command_line_statements.html" class="no-ch">Basic command line statements</a></li>
+      <li><a href="importing_datasets.html" class="no-ch">Importing datasets</a></li>
+      <li><a href="some_r_data_structures_and_data_selection.html" class="daddy">Some R data structures and data selection</a>
+      <ul class="other-section">
+         <li><a href="vectors.html" class="no-ch">Vectors</a></li>
+         <li><a href="matrices.html" class="no-ch">Matrices</a></li>
+         <li><a href="data_frames.html" class="no-ch">Data frames</a></li>
+         <li><a href="first_task.html" class="no-ch">First task</a></li>
+      </ul>
+      </li>
+      <li class="current-page-parent"><a href="basic_data_manipulation_routines_in_r.html" class="current-page-parent daddy">Basic data manipulation routines in R</a>
+      <ul>
+         <li><a href="deriving_new_variables_from_existing_data.html" class="no-ch">Deriving new variables from existing data</a></li>
+         <li class="current-page-parent"><a href="transforming_variables.html" class="current-page-parent daddy">Transforming variables</a>
+         <ul>
+            <li id="active"><a href="creating_ordinals_from_continuous_data.html" class="active no-ch">Creating ordinals from continuous data</a></li>
+            <li><a href="using_log_transformation_of_skewed_data.html" class="no-ch">Using log transformation of skewed data</a></li>
+         </ul>
+         </li>
+         <li><a href="factors_levels_and_labels.html" class="no-ch">Factors, levels and labels</a></li>
+         <li><a href="second_task.html" class="no-ch">Second task</a></li>
+      </ul>
+      </li>
+      <li><a href="summary_statistics.html" class="daddy">Summary statistics</a>
+      <ul class="other-section">
+         <li><a href="third_task.html" class="no-ch">Third task</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="plotting.html" class="daddy">Plotting</a>
+   <ul class="other-section">
+      <li><a href="basics_of_plotting.html" class="no-ch">Basics of plotting</a></li>
+      <li><a href="ggplot.html" class="no-ch">ggplot</a></li>
+   </ul>
+   </li>
+   <li><a href="testing.html" class="daddy">Testing</a>
+   <ul class="other-section">
+      <li><a href="the_ttest.html" class="daddy">The t-test</a>
+      <ul class="other-section">
+         <li><a href="the_independent_samples_ttest.html" class="no-ch">The independent samples t-test</a></li>
+         <li><a href="the_paired_ttest.html" class="no-ch">The paired t-test</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="anova.html" class="no-ch">ANOVA</a></li>
+   <li><a href="regression.html" class="daddy">Regression</a>
+   <ul class="other-section">
+      <li><a href="simple_linear_regression.html" class="no-ch">Simple linear regression</a></li>
+      <li><a href="multiple_regression.html" class="no-ch">Multiple regression</a></li>
+      <li><a href="categorical_predictors.html" class="no-ch">Categorical predictors</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="transforming_variables.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="using_log_transformation_of_skewed_data.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Creating ordinals from continuous data</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id20">
+<div class="iDevice emphasis0">
+<div id="ta20_85" class="block iDevice_content">
+<h2>Cutting continuous data</h2>
+<p>Let us use the data set cars which is supplied with R.</p>
+<p>One of the variables in the data set is <em>speed</em>.</p>
+<p>We will group the cars in the data set into three groups: <em>low</em>, <em>medium</em>, <em>high</em>. First, we find the quartiles which will give us some cut off points (this is arbitrary, the cut off points for such a categorisation are of course theoretical).</p>
+<pre><span style="font-size: small;"> quantile(cars$speed)
+  0%  25%  50%  75% 100% 
+  4   12   15   19   25 
+</span></pre>
+<p>Now I will use a selection statement based on the values of <em>speed</em> to assign values to a new element of the data frame. I will call the new variable <em>speedl</em> for speed level.</p>
+<p>cars$speedl[cars$speed&lt;=12]&lt;-“3”<br />cars$speedl[cars$speed&gt;12 &amp; cars$speed&lt;=19]&lt;-“2”<br />cars$speedl[cars$speed&gt;19]&lt;-“1”</p>
+<p>It remains for us to make sure that R will treat <em>speedl</em> as a factor variable and to label the levels of the factor. To do this we run the line</p>
+<p>cars$speedl &lt;- factor(cars$speedl = c(“low”, “medium”,”high))</p>
+<p>Further example</p>
+<p>Suppose that we have some income data</p>
+<p>We can take this variable (which we are treating as continuous) and transform the information to create a new variable <em>income band</em>. We will use the following rule</p>
+<p>income band is 3 if 55k &lt; income &lt; max+1<br />income band is 2 if 30k &lt; income &lt; 55k<br />income band is 1 if min &lt; income &lt; 30k</p>
+<p>We see that these bands are closed left and right: the top category for example <em>excludes</em> the 55k incomes.</p>
+<p>The new ordinal can also be created very straightforwardly with the <em>cut</em> function.</p>
+<p>To see how it should work,  let us consider a very simple set of data points.</p>
+<pre><code data-origin="&lt;pre&gt;&lt;code&gt;mydata&amp;lt;-1:100
+&lt;/code&gt;&lt;/pre&gt;">mydata&lt;-1:100
+</code></pre>
+<p>We will cut this into groups as follows:</p>
+<p>&gt;0 and &lt;=25<br />&gt;25 and &lt;=50<br />&gt;50 and &gt;=75<br />&gt;75 and &lt;= 100</p>
+<p>the code is</p>
+<pre><code data-origin="&lt;pre&gt;&lt;code&gt;mylevels&amp;lt;-cut(mydata,c(0,25,50,75,100))
+&lt;/code&gt;&lt;/pre&gt;">mylevels&lt;-cut(mydata,c(0,25,50,75,100))
+</code></pre>
+<p>And we can see the result:</p>
+<pre><code data-origin="&lt;pre&gt;&lt;code&gt; &amp;gt; mylevels
+  [1] (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]  
+  [9] (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]  
+ [17] (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]  
+ [25] (0,25]   (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50] 
+ [33] (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50] 
+ [41] (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50] 
+ [49] (25,50]  (25,50]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75] 
+ [57] (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75] 
+ [65] (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75] 
+ [73] (50,75]  (50,75]  (50,75]  (75,100] (75,100] (75,100] (75,100] (75,100]
+ [81] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100]
+ [89] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100]
+ [97] (75,100] (75,100] (75,100] (75,100]
+Levels: (0,25] (25,50] (50,75] (75,100]
+&lt;/code&gt;&lt;/pre&gt;"> &gt; mylevels
+  [1] (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]  
+  [9] (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]  
+ [17] (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]   (0,25]  
+ [25] (0,25]   (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50] 
+ [33] (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50] 
+ [41] (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50]  (25,50] 
+ [49] (25,50]  (25,50]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75] 
+ [57] (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75] 
+ [65] (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75]  (50,75] 
+ [73] (50,75]  (50,75]  (50,75]  (75,100] (75,100] (75,100] (75,100] (75,100]
+ [81] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100]
+ [89] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100] (75,100]
+ [97] (75,100] (75,100] (75,100] (75,100]
+Levels: (0,25] (25,50] (50,75] (75,100]
+</code></pre>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper activityIdevice em_iDevice" id="id21">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Consolidation task</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta21_57_2" class="block iDevice_content">
+<p>Test the code from this topic. </p>
+<p>Cut the MedicalTrailX data into three income bands as described in this topic.  The file is supplied below.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FileAttachIdeviceInc em_iDevice" id="id22">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header" style="background-image:url(icon_assignment.gif)"><h1 class="iDeviceTitle">MedicalXTrial data</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta22_82" class="block iDevice_content">
+<p>This data is in Excel format.</p>
+</div>
+<ul class='exeFileList'><li><a href='medicaltrialX.xlsx' target='_blank'>Download the Medical Trial Data in Excel Format<span> (New Window)</span></a></li>
+</ul></div>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="transforming_variables.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="using_log_transformation_of_skewed_data.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+</div>
+</body></html>

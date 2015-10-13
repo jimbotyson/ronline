@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Multiple regression </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Hide",showFeedback:"Show Feedback",hideFeedback:"Hide Feedback",correct:"Correct",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">R: a first course</a></li>
+   <li><a href="data_management_and_descriptive_statistics.html" class="daddy">Data management and descriptive statistics</a>
+   <ul class="other-section">
+      <li><a href="r_and_rstudio.html" class="no-ch">R and RStudio</a></li>
+      <li><a href="help.html" class="no-ch">Help</a></li>
+      <li><a href="the_interface.html" class="no-ch">The interface</a></li>
+      <li><a href="add_on_packages.html" class="no-ch">Add on packages</a></li>
+      <li><a href="basic_command_line_statements.html" class="no-ch">Basic command line statements</a></li>
+      <li><a href="importing_datasets.html" class="no-ch">Importing datasets</a></li>
+      <li><a href="some_r_data_structures_and_data_selection.html" class="daddy">Some R data structures and data selection</a>
+      <ul class="other-section">
+         <li><a href="vectors.html" class="no-ch">Vectors</a></li>
+         <li><a href="matrices.html" class="no-ch">Matrices</a></li>
+         <li><a href="data_frames.html" class="no-ch">Data frames</a></li>
+         <li><a href="first_task.html" class="no-ch">First task</a></li>
+      </ul>
+      </li>
+      <li><a href="basic_data_manipulation_routines_in_r.html" class="daddy">Basic data manipulation routines in R</a>
+      <ul class="other-section">
+         <li><a href="deriving_new_variables_from_existing_data.html" class="no-ch">Deriving new variables from existing data</a></li>
+         <li><a href="transforming_variables.html" class="daddy">Transforming variables</a>
+         <ul class="other-section">
+            <li><a href="creating_ordinals_from_continuous_data.html" class="no-ch">Creating ordinals from continuous data</a></li>
+            <li><a href="using_log_transformation_of_skewed_data.html" class="no-ch">Using log transformation of skewed data</a></li>
+         </ul>
+         </li>
+         <li><a href="factors_levels_and_labels.html" class="no-ch">Factors, levels and labels</a></li>
+         <li><a href="second_task.html" class="no-ch">Second task</a></li>
+      </ul>
+      </li>
+      <li><a href="summary_statistics.html" class="daddy">Summary statistics</a>
+      <ul class="other-section">
+         <li><a href="third_task.html" class="no-ch">Third task</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="plotting.html" class="daddy">Plotting</a>
+   <ul class="other-section">
+      <li><a href="basics_of_plotting.html" class="no-ch">Basics of plotting</a></li>
+      <li><a href="ggplot.html" class="no-ch">ggplot</a></li>
+   </ul>
+   </li>
+   <li><a href="testing.html" class="daddy">Testing</a>
+   <ul class="other-section">
+      <li><a href="the_ttest.html" class="daddy">The t-test</a>
+      <ul class="other-section">
+         <li><a href="the_independent_samples_ttest.html" class="no-ch">The independent samples t-test</a></li>
+         <li><a href="the_paired_ttest.html" class="no-ch">The paired t-test</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="anova.html" class="no-ch">ANOVA</a></li>
+   <li class="current-page-parent"><a href="regression.html" class="current-page-parent daddy">Regression</a>
+   <ul>
+      <li><a href="simple_linear_regression.html" class="no-ch">Simple linear regression</a></li>
+      <li id="active"><a href="multiple_regression.html" class="active no-ch">Multiple regression</a></li>
+      <li><a href="categorical_predictors.html" class="no-ch">Categorical predictors</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="simple_linear_regression.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="categorical_predictors.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Multiple regression</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id52">
+<div class="iDevice emphasis0">
+<div id="ta52_85" class="block iDevice_content">
+<p>Multiple regression allows us to</p>
+<ul>
+<li>predict the value of the dependent variable from more than one independent variable</li>
+<li>estimate the influence of several independent variables on the outcome</li>
+</ul>
+<p>You could for example consider both <em>age</em> and <em>weight</em> as predictors of <em>resting heart rate</em>.</p>
+<p>Although it is not as easy to visualise the multiple regression as the simple linear regression, the model is really a simple elaboration.  We have the equation</p>
+<p><img src="eXe_LaTeX_math_4.gif"  height="20" width="224" /></p>
+<p>using β to designate the intercept.</p>
+<p>Intuitively a result tells us that age contributes so much, weight so much to the outcome - resting heart rate.</p>
+<p>It is of course a matter of some skill (and knowledge!) to determine what independents belong in a model, but we have some guidance from the <em>t</em> statistic calculated for each of the slope coefficients.  If a coefficient is not - per <em>p(t)</em> - significant we should note that it does not contribute to the model: there is no linear dependence of the dependent on that predictor.</p>
+<p>When a predictor is not significant, we may improve the fit by removing it from the model and recalculating.  However, we should notice that there is here a critical distinction between the statistical significance and the theoretical relevance: knowing that some variable is not a significant predictor my be very important to ones theoretical understanding of the domain.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper ReflectionIdevice em_iDevice" id="id53">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">A simple multiple regression model</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta53_92" class="block iDevice_content">
+<p>Open the <em>results</em> data as you did previously.</p>
+<p>Add <em>avxm</em> to the dataframe as the mean of <em>maths</em>, <em>english</em>, and <em>history.</em></p>
+<p><em></em>Theoretically, each of the predictors contributes a third of the outcome.  One thing to consider here is whether the degree of correlation between predictors affects the model.  We know that the model will be a perfect fit (and has no explanatory power).</p>
+<p>But, what if we must <em>predict</em> on the basis of <em>maths</em> and <em>english</em> alone?   (In reality this situation is unlikely to ever arise but it makes a neat illustration of the logic of multiple regression).</p>
+<p>First, check the correlations between pairs of independent variables.  Notice which are highly correlated and which not.</p>
+<p>Now run a model with <em>avxm</em> as the dependent and <em>maths</em> and <em>english</em> as the independent variables.  What is the outcome?  Which of the two has the greater influence on <em>avxm</em>?</p>
+<p>Now run a model with <em>english</em> and <em>history</em> as predictors.  What is the outcome?  Which of the two has the greater influence on <em>avxm</em>?</p>
+</div>
+<form name="feedback-form-53" action="#" onsubmit="return false" class="feedback-form">
+<div class="block iDevice_buttons feedback-button js-required">
+<p><input type="button" name="toggle-feedback-53" value="Show Feedback" class="feedbackbutton" onclick="$exe.toggleFeedback(this,true);return false" /></p>
+</div>
+<section id="feedback-53" class="feedback js-feedback js-hidden">
+<h1 class="js-sr-av">Feedback</h1>
+<div id="ta53_93" class="block iDevice_content">
+<p>I leave it to you to create the code, but I want to draw attention to the fact that the input variables in this model exhibit multiple colinearity: they are each correlated with the others.  This of course is an effct of the artificial nature of this model.  There is no practical reason to regress an aggregate score against its inputs.  However, it does illustrate that when you have multicolinearity in a model, removing predictors from among correlated predictor variables can have surprisingly large effects on the coefficients of the resulting model.  In general, with these models, while the overal explanatory power is unaffected it is not easy to interpret the effect of the individual inputs.</p>
+</div>
+</section>
+</form>
+</div>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="simple_linear_regression.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="categorical_predictors.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+</div>
+</body></html>

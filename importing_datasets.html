@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Importing datasets </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Hide",showFeedback:"Show Feedback",hideFeedback:"Hide Feedback",correct:"Correct",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">R: a first course</a></li>
+   <li class="current-page-parent"><a href="data_management_and_descriptive_statistics.html" class="current-page-parent daddy">Data management and descriptive statistics</a>
+   <ul>
+      <li><a href="r_and_rstudio.html" class="no-ch">R and RStudio</a></li>
+      <li><a href="help.html" class="no-ch">Help</a></li>
+      <li><a href="the_interface.html" class="no-ch">The interface</a></li>
+      <li><a href="add_on_packages.html" class="no-ch">Add on packages</a></li>
+      <li><a href="basic_command_line_statements.html" class="no-ch">Basic command line statements</a></li>
+      <li id="active"><a href="importing_datasets.html" class="active no-ch">Importing datasets</a></li>
+      <li><a href="some_r_data_structures_and_data_selection.html" class="daddy">Some R data structures and data selection</a>
+      <ul class="other-section">
+         <li><a href="vectors.html" class="no-ch">Vectors</a></li>
+         <li><a href="matrices.html" class="no-ch">Matrices</a></li>
+         <li><a href="data_frames.html" class="no-ch">Data frames</a></li>
+         <li><a href="first_task.html" class="no-ch">First task</a></li>
+      </ul>
+      </li>
+      <li><a href="basic_data_manipulation_routines_in_r.html" class="daddy">Basic data manipulation routines in R</a>
+      <ul class="other-section">
+         <li><a href="deriving_new_variables_from_existing_data.html" class="no-ch">Deriving new variables from existing data</a></li>
+         <li><a href="transforming_variables.html" class="daddy">Transforming variables</a>
+         <ul class="other-section">
+            <li><a href="creating_ordinals_from_continuous_data.html" class="no-ch">Creating ordinals from continuous data</a></li>
+            <li><a href="using_log_transformation_of_skewed_data.html" class="no-ch">Using log transformation of skewed data</a></li>
+         </ul>
+         </li>
+         <li><a href="factors_levels_and_labels.html" class="no-ch">Factors, levels and labels</a></li>
+         <li><a href="second_task.html" class="no-ch">Second task</a></li>
+      </ul>
+      </li>
+      <li><a href="summary_statistics.html" class="daddy">Summary statistics</a>
+      <ul class="other-section">
+         <li><a href="third_task.html" class="no-ch">Third task</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="plotting.html" class="daddy">Plotting</a>
+   <ul class="other-section">
+      <li><a href="basics_of_plotting.html" class="no-ch">Basics of plotting</a></li>
+      <li><a href="ggplot.html" class="no-ch">ggplot</a></li>
+   </ul>
+   </li>
+   <li><a href="testing.html" class="daddy">Testing</a>
+   <ul class="other-section">
+      <li><a href="the_ttest.html" class="daddy">The t-test</a>
+      <ul class="other-section">
+         <li><a href="the_independent_samples_ttest.html" class="no-ch">The independent samples t-test</a></li>
+         <li><a href="the_paired_ttest.html" class="no-ch">The paired t-test</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="anova.html" class="no-ch">ANOVA</a></li>
+   <li><a href="regression.html" class="daddy">Regression</a>
+   <ul class="other-section">
+      <li><a href="simple_linear_regression.html" class="no-ch">Simple linear regression</a></li>
+      <li><a href="multiple_regression.html" class="no-ch">Multiple regression</a></li>
+      <li><a href="categorical_predictors.html" class="no-ch">Categorical predictors</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="basic_command_line_statements.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="some_r_data_structures_and_data_selection.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Importing datasets</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id8">
+<div class="iDevice emphasis0">
+<div id="ta8_85" class="block iDevice_content">
+<h1 id="import-datasets-in-to-the-rstudio-workspace-from-plain-text-and-excel-file-formats">Importing datasets in to the RStudio workspace from plain text and Excel file formats</h1>
+<p>You can import data into R from a file containing plain text. The file should contain data that can be understood as cases and variables. Most commonly, the file will contain cases in rows and variables in columns. The columns should be separated by some character - often a tab or a comma.</p>
+<p>Here is an example, just the first few lines of a file where the columns are separated by commas:</p>
+<p>patient,gender,surname,age,postcode,income,smoker,hbefore,hafter<br />735745,1,ROBBINS,32,KT13,46000,N,94.58,88.79<br />1009009,2,MCGREGOR,33,KY1,58000,N,106.12,78.25<br />845260,2,KUMAR,38,FY7,47000,Y,88.11,102.45<br />780768,1,ALLINSON-HENRY,51,KA11,55000,N,83.62,63.82<br />1176135,2,OLDER,44,DE23,28000,N,72.31,77.50<br />1275041,1,BERRY,41,S80,28000,Y,84.37,68.21<br />845772,1,SMITH,56,BT43,61000,N,76.95,81.47</p>
+<p>It isn’t very easy to understand set out like this, so let’s line up the columns visually:</p>
+<table>
+<tbody>
+<tr>
+<td>patient</td>
+<td>gender</td>
+<td>surname</td>
+<td>age</td>
+<td>postcode</td>
+<td>income</td>
+<td>smoker</td>
+<td>hbefore</td>
+<td>hafter</td>
+</tr>
+<tr>
+<td>735745</td>
+<td>1</td>
+<td>ROBBINS</td>
+<td>32</td>
+<td>KT13</td>
+<td>46000</td>
+<td>N</td>
+<td>94.58</td>
+<td>88.79</td>
+</tr>
+<tr>
+<td>1009009</td>
+<td>2</td>
+<td>MCGREGOR</td>
+<td>33</td>
+<td>KY1</td>
+<td>58000</td>
+<td>N</td>
+<td>106.12</td>
+<td>78.25</td>
+</tr>
+<tr>
+<td>845260</td>
+<td>2</td>
+<td>KUMAR</td>
+<td>38</td>
+<td>FY7</td>
+<td>47000</td>
+<td>Y</td>
+<td>88.11</td>
+<td>102.45</td>
+</tr>
+<tr>
+<td>780768</td>
+<td>1</td>
+<td>ALLINSON-HENRY</td>
+<td>51</td>
+<td>KA11</td>
+<td>55000</td>
+<td>N</td>
+<td>83.62</td>
+<td>63.82</td>
+</tr>
+<tr>
+<td>1176135</td>
+<td>2</td>
+<td>OLDER</td>
+<td>44</td>
+<td>DE23</td>
+<td>28000</td>
+<td>N</td>
+<td>72.31</td>
+<td>77.50</td>
+</tr>
+<tr>
+<td>1275041</td>
+<td>1</td>
+<td>BERRY</td>
+<td>41</td>
+<td>S80</td>
+<td>28000</td>
+<td>Y</td>
+<td>84.37</td>
+<td>68.21</td>
+</tr>
+<tr>
+<td>845772</td>
+<td>1</td>
+<td>SMITH</td>
+<td>56</td>
+<td>BT43</td>
+<td>61000</td>
+<td>N</td>
+<td>76.95</td>
+<td>81.47</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that this is a file with nine columns - nine variables if you will. Some of the variables are numeric and some are character data. Because this is mixed data - numeric and text - we will read it into a R list. If the file is named <em>excsv.txt</em> here is the command</p>
+<p><code data-origin="&lt;pre&gt;&lt;code&gt;&amp;gt;dat&amp;lt;-read.csv(&quot;excsv.txt&quot;,header=TRUE, sep=&quot;,&quot;)
+&lt;/code&gt;&lt;/pre&gt;">&gt;dat&lt;-read.csv("excsv.txt",header=TRUE, sep=",") </code></p>
+<p>We have used the function <em>read.csv</em> because of the format of the data: it has values separated by commas (<em>sep=”,”</em>). And we have told R that the first line contains headers (<em>header=TRUE</em>).</p>
+<p>As we said, this object has the <em>type</em> <em>list</em> which is the array like structure for heterogeneous data. R will also treat this as a dataframe: a two dimensional array (a table like object) with variables in columns and observations or cases in rows.</p>
+<p>You can read <em>tab</em> separated data with the <em>read.table()</em> command.</p>
+<p>You can also read spreadsheet data.</p>
+<p>If our example data were in an excel spreadsheet instead of a text file, we could read it if the package <em>xlsx</em> were installed in R. We will look at installing packages later, but the correct command would be:</p>
+<p><code data-origin="&lt;pre&gt;&lt;code&gt;&amp;gt;dat&amp;lt;-read.xlsx(&quot;datafile.xlsx&quot;,header=TRUE)
+&lt;/code&gt;&lt;/pre&gt;">&gt;dat&lt;-read.xlsx("datafile.xlsx",header=TRUE) </code></p>
+<p>You see that it’s very similar in form.</p>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="basic_command_line_statements.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="some_r_data_structures_and_data_selection.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+</div>
+</body></html>

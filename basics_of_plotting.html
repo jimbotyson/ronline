@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Basics of plotting </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Hide",showFeedback:"Show Feedback",hideFeedback:"Hide Feedback",correct:"Correct",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">R: a first course</a></li>
+   <li><a href="data_management_and_descriptive_statistics.html" class="daddy">Data management and descriptive statistics</a>
+   <ul class="other-section">
+      <li><a href="r_and_rstudio.html" class="no-ch">R and RStudio</a></li>
+      <li><a href="help.html" class="no-ch">Help</a></li>
+      <li><a href="the_interface.html" class="no-ch">The interface</a></li>
+      <li><a href="add_on_packages.html" class="no-ch">Add on packages</a></li>
+      <li><a href="basic_command_line_statements.html" class="no-ch">Basic command line statements</a></li>
+      <li><a href="importing_datasets.html" class="no-ch">Importing datasets</a></li>
+      <li><a href="some_r_data_structures_and_data_selection.html" class="daddy">Some R data structures and data selection</a>
+      <ul class="other-section">
+         <li><a href="vectors.html" class="no-ch">Vectors</a></li>
+         <li><a href="matrices.html" class="no-ch">Matrices</a></li>
+         <li><a href="data_frames.html" class="no-ch">Data frames</a></li>
+         <li><a href="first_task.html" class="no-ch">First task</a></li>
+      </ul>
+      </li>
+      <li><a href="basic_data_manipulation_routines_in_r.html" class="daddy">Basic data manipulation routines in R</a>
+      <ul class="other-section">
+         <li><a href="deriving_new_variables_from_existing_data.html" class="no-ch">Deriving new variables from existing data</a></li>
+         <li><a href="transforming_variables.html" class="daddy">Transforming variables</a>
+         <ul class="other-section">
+            <li><a href="creating_ordinals_from_continuous_data.html" class="no-ch">Creating ordinals from continuous data</a></li>
+            <li><a href="using_log_transformation_of_skewed_data.html" class="no-ch">Using log transformation of skewed data</a></li>
+         </ul>
+         </li>
+         <li><a href="factors_levels_and_labels.html" class="no-ch">Factors, levels and labels</a></li>
+         <li><a href="second_task.html" class="no-ch">Second task</a></li>
+      </ul>
+      </li>
+      <li><a href="summary_statistics.html" class="daddy">Summary statistics</a>
+      <ul class="other-section">
+         <li><a href="third_task.html" class="no-ch">Third task</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="plotting.html" class="current-page-parent daddy">Plotting</a>
+   <ul>
+      <li id="active"><a href="basics_of_plotting.html" class="active no-ch">Basics of plotting</a></li>
+      <li><a href="ggplot.html" class="no-ch">ggplot</a></li>
+   </ul>
+   </li>
+   <li><a href="testing.html" class="daddy">Testing</a>
+   <ul class="other-section">
+      <li><a href="the_ttest.html" class="daddy">The t-test</a>
+      <ul class="other-section">
+         <li><a href="the_independent_samples_ttest.html" class="no-ch">The independent samples t-test</a></li>
+         <li><a href="the_paired_ttest.html" class="no-ch">The paired t-test</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="anova.html" class="no-ch">ANOVA</a></li>
+   <li><a href="regression.html" class="daddy">Regression</a>
+   <ul class="other-section">
+      <li><a href="simple_linear_regression.html" class="no-ch">Simple linear regression</a></li>
+      <li><a href="multiple_regression.html" class="no-ch">Multiple regression</a></li>
+      <li><a href="categorical_predictors.html" class="no-ch">Categorical predictors</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="plotting.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="ggplot.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Basics of plotting</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id40">
+<div class="iDevice emphasis0">
+<div id="ta40_85" class="block iDevice_content">
+<h1 id="simple-r-plots">Simple R plots</h1>
+<p>We have already seen a simple histograph created with <em>hist()</em>. The code below illustrates how we can modify a graph incrementally by adding elements. It uses the built in data set <em>mtcars</em> and create a histogram of the values in the <em>mpg</em> column then overlay a curve with a normal distribution with mean equal to the mean value of <em>mpg</em> and standard deviation equal to its standard deviation:</p>
+<pre><code data-origin="&lt;pre&gt;&lt;code&gt;&amp;gt; hist(mtcars$mpg,prob=TRUE)
+&amp;gt; curve(dnorm(x,mean=mean(mtcars$mpg),sd=sd(mtcars$mpg)),add = TRUE)
+&lt;/code&gt;&lt;/pre&gt;">&gt; hist(mtcars$mpg,prob=TRUE)
+&gt; curve(dnorm(x,mean=mean(mtcars$mpg),sd=sd(mtcars$mpg)),add = TRUE)
+</code></pre>
+<p>This graph is created in two steps. The first line produces this graph</p>
+<p><img src="histcars.png" height="325" width="500" /></p>
+<p>The second overlays the curve producing this</p>
+<p><img src="histcurve.png" height="325" width="500" /></p>
+<p>You will see that this same process of plot elaboration holds for other graph types.</p>
+<h2>Essential reading</h2>
+<p>Below we provide links to the <strong>Quick-R</strong> blog site pages that explain how to produce different kinds of R plot and graph.</p>
+<p><a href="http://www.statmethods.net/graphs/dot.html">dot plots</a></p>
+<p><a href="http://www.statmethods.net/graphs/bar.html">bar charts</a></p>
+<p><a href="http://www.statmethods.net/graphs/line.html">line charts</a></p>
+<p><a href="http://www.statmethods.net/graphs/pie.html">pie charts</a></p>
+<p><a href="http://www.statmethods.net/graphs/boxplot.html">boxplots</a></p>
+<p><a href="http://www.statmethods.net/graphs/scatterplot.html">scatter plots</a></p>
+<p>When you have worked through as many of these as you have the time (and energy) for, you may later want to look at <a target="_blank" href="http://www.statmethods.net/advgraphs/index.html">this guide to advanced plots</a>.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper CasestudyIdevice em_iDevice" id="id38">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Graphing Exercise</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<section id="ta38_94" class="block iDevice_content">
+<p>The data in the file <em>results.csv</em> below contains exam scores for thirty school students: fifteen boys and fifteen girls.  They have been scored for exams in <em>maths</em>, <em>english</em>, and <em>history</em> out of 100.</p>
+<p>For each student, gender is coded <em></em><em>1=girl</em> and <em>2=boy</em>.  The <em>class</em> variable tells us which class a student is in and has levels <em>1</em>, <em>2</em>, or <em>3</em>.</p>
+<p>We would like to see how scores vary for each exam and for the exam score average by <em>gender</em> and <em>class</em>.  To do this you are asked to first generate the variable <em>avxm</em> which should hold the average of the three exam scores for each pupil.  Then,  produce the boxplots: for each score you will need to create two box plots split by gender and three split by class.</p>
+<p>The graphs need to be laid out so as to make the comparison easy.</p>
+</section>
+<section id="taquesQuestion0b38" class="block iDevice_content">
+<p>You can generate <em>avxm</em> using the assignment operator <em>&lt;-</em> and some arithmetic.</p>
+<p>To create the plots you will need to use <em>boxplot</em>.  The simplest boxplot command requires a continuous variable and a factor.  The syntax is</p>
+<p><code>&gt; boxplot(score~factor)</code></p>
+<p>For example</p>
+<p><code>&gt; boxplot(avxm~class)</code></p>
+<p>creates three box plots for the <em>avxm</em> variable split on the class factor.</p>
+<p>You can also use a <em>subset</em> option</p>
+<p><code> &gt; boxplot(avxm~class,subset = gender=="1") </code></p>
+<p><code>&gt; boxplot(avxm~class,subset = gender=="2")</code></p>
+<p>You should test these lines of code to be sure that you understand them.  Incidentally they reveal something about the distribution of gender over class.  What is it?</p>
+<p>The <em>par</em> function allows you to create parameters for use in a plot.  One parameter allows you to specify that a sequence of plots command will be layed out as sub-plots in columns and rows.  You can specify the number columns and rows with the <em>multiple figure</em> options.  They are</p>
+<table border="0">
+<tbody>
+<tr>
+<td>mfrows=c(nr nc)</td>
+<td>plot the graphs row-wise</td>
+</tr>
+<tr>
+<td>mfcols=c(nr nc)</td>
+<td>plot the graphs column-wise</td>
+</tr>
+</tbody>
+</table>
+<p>So the command</p>
+<p><code> par(mfrow=c(3,2))</code></p>
+<p>Will layout any graphing commands that follow in a grid of three rows and two columns, filling across the rows first.  The code</p>
+<p><code>par(mfcol=c(3,2))</code></p>
+<p>Will layout any graphing commands that follow in a grid of three rows and two columns, but filling down the columns first.</p>
+<p>Using these commands, create a suitable set of plots, conveniently laid out to illustrate the spread of exam scores across <em>class</em> and <em>gender</em>.</p>
+<p>For <em>class==2</em> you should create a graph of <em>avxm</em> by gender.  To do this you will need to use the subset parameter on the <em>boxplot</em> command.  Use R help or any other resources you can find to research this.</p>
+</section>
+<form name="feedback-form-q0b38" action="#" onsubmit="return false" class="feedback-form">
+<div class="block iDevice_buttons feedback-button js-required">
+<p><input type="button" name="toggle-feedback-q0b38" value="Show Feedback" class="feedbackbutton" onclick="$exe.toggleFeedback(this,true);return false" /></p>
+</div>
+<section id="feedback-q0b38" class="feedback js-feedback js-hidden">
+<h1 class="js-sr-av">Feedback</h1>
+<div id="taquesFeedback0b38" class="block iDevice_content">
+<p>There is no single correct solution but this code should give you some idea of how to apporach this</p>
+<p><code> &gt; par(mfrow=c(1,3))</code></p>
+<p><code> &gt; boxplot(maths~class) </code></p>
+<p><code>&gt; boxplot(english~class) </code></p>
+<p><code>&gt; boxplot(history~class) </code></p>
+<p>To create the plot of <em>avxm</em> split on gender for class two only:</p>
+<p><code>boxplot(avxm~gender, subset = class==2)</code></p>
+</div>
+</section>
+</form>
+</div>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="plotting.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="ggplot.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+</div>
+</body></html>

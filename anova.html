@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>ANOVA </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Hide",showFeedback:"Show Feedback",hideFeedback:"Hide Feedback",correct:"Correct",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">R: a first course</a></li>
+   <li><a href="data_management_and_descriptive_statistics.html" class="daddy">Data management and descriptive statistics</a>
+   <ul class="other-section">
+      <li><a href="r_and_rstudio.html" class="no-ch">R and RStudio</a></li>
+      <li><a href="help.html" class="no-ch">Help</a></li>
+      <li><a href="the_interface.html" class="no-ch">The interface</a></li>
+      <li><a href="add_on_packages.html" class="no-ch">Add on packages</a></li>
+      <li><a href="basic_command_line_statements.html" class="no-ch">Basic command line statements</a></li>
+      <li><a href="importing_datasets.html" class="no-ch">Importing datasets</a></li>
+      <li><a href="some_r_data_structures_and_data_selection.html" class="daddy">Some R data structures and data selection</a>
+      <ul class="other-section">
+         <li><a href="vectors.html" class="no-ch">Vectors</a></li>
+         <li><a href="matrices.html" class="no-ch">Matrices</a></li>
+         <li><a href="data_frames.html" class="no-ch">Data frames</a></li>
+         <li><a href="first_task.html" class="no-ch">First task</a></li>
+      </ul>
+      </li>
+      <li><a href="basic_data_manipulation_routines_in_r.html" class="daddy">Basic data manipulation routines in R</a>
+      <ul class="other-section">
+         <li><a href="deriving_new_variables_from_existing_data.html" class="no-ch">Deriving new variables from existing data</a></li>
+         <li><a href="transforming_variables.html" class="daddy">Transforming variables</a>
+         <ul class="other-section">
+            <li><a href="creating_ordinals_from_continuous_data.html" class="no-ch">Creating ordinals from continuous data</a></li>
+            <li><a href="using_log_transformation_of_skewed_data.html" class="no-ch">Using log transformation of skewed data</a></li>
+         </ul>
+         </li>
+         <li><a href="factors_levels_and_labels.html" class="no-ch">Factors, levels and labels</a></li>
+         <li><a href="second_task.html" class="no-ch">Second task</a></li>
+      </ul>
+      </li>
+      <li><a href="summary_statistics.html" class="daddy">Summary statistics</a>
+      <ul class="other-section">
+         <li><a href="third_task.html" class="no-ch">Third task</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="plotting.html" class="daddy">Plotting</a>
+   <ul class="other-section">
+      <li><a href="basics_of_plotting.html" class="no-ch">Basics of plotting</a></li>
+      <li><a href="ggplot.html" class="no-ch">ggplot</a></li>
+   </ul>
+   </li>
+   <li><a href="testing.html" class="daddy">Testing</a>
+   <ul class="other-section">
+      <li><a href="the_ttest.html" class="daddy">The t-test</a>
+      <ul class="other-section">
+         <li><a href="the_independent_samples_ttest.html" class="no-ch">The independent samples t-test</a></li>
+         <li><a href="the_paired_ttest.html" class="no-ch">The paired t-test</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li id="active"><a href="anova.html" class="active no-ch">ANOVA</a></li>
+   <li><a href="regression.html" class="daddy">Regression</a>
+   <ul class="other-section">
+      <li><a href="simple_linear_regression.html" class="no-ch">Simple linear regression</a></li>
+      <li><a href="multiple_regression.html" class="no-ch">Multiple regression</a></li>
+      <li><a href="categorical_predictors.html" class="no-ch">Categorical predictors</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="the_paired_ttest.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="regression.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">ANOVA</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id48">
+<div class="iDevice emphasis0">
+<div id="ta48_85" class="block iDevice_content">
+<p>ANOVA is used to compare differences of means among more than 2 groups.  It determines whether the means are different by comparing the variability within the groups (error) to the variability between groups (the treatment effect: the effect of the independent variable or factor).  That's why it's the <em>analysis of variance</em> rather than the <em>analysis of</em> means.</p>
+<p>The null hypothesis for the ANOVA is that the mean value of the variable of interest does not differ between groups.</p>
+<p>The alternative hypothesis is that at least one mean is different.</p>
+<p>The main statistic computed by the procedure is the <em>F</em> value.  This is the ratio of the <em>between group variation</em> and the <em>within group variation</em>.  If these quantities are close to equal then the <em>F </em>statistic is close to one.</p>
+<p>R provides a direct test for a one way anova (ie with <em>a single factor</em>) and provides for more complex models using either the function <em>aov()</em> or the linear model <em>lm</em><em>()</em>.  Since the <em>aov()</em> function will cover both one way and more complex models, it is sensible to use it for both cases.</p>
+<p>Before carrying out the ANOVA test it is useful to check the descriptive statistics and to visualise the variables of interest with box plots.</p>
+<p>The instructions for carrying out the <em></em>tests are on this <a href="http://www.statmethods.net/stats/anova.html">Quick-R Blog.  </a></p>
+<p>There is a detailed <a href="http://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html?org=ucl.ac.uk">Lynda tutorial for a one way case</a>.  And another for <a href="http://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html?org=ucl.ac.uk">the two factor ANOVA</a>.</p>
+<p>This blog page provides <a target="_blank" href="http://rtutorialseries.blogspot.co.uk/2011/03/r-tutorial-series-anova-pairwise.html">a tutorial in pairwise comparison methods</a>.</p>
+<p>These materials provide the main learning for this topic.</p>
+<h2>Supplementary statistical background material</h2>
+<p>If you want to see in some detail how the ANOVA statistic is calculated, there is a very good series of <a target="_blank" href="https://www.khanacademy.org/math/probability/statistics-inferential/anova/v/anova-1-calculating-sst-total-sum-of-squares">short videos from Khan Academy</a> that explains it.</p>
+<p>It is also worth reflecting that the ANOVA is part of the same model as <em>linear regression</em> (coming soon) and in fact we are often taught that ANOVA is the same thing as regression.  <a target="_blank" href="http://www.theanalysisfactor.com/why-anova-and-linear-regression-are-the-same-analysis/">This blog post from theanalysisfactor discusses the relationship.</a></p>
+<address></address>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper ReflectionIdevice em_iDevice" id="id50">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Performing a one-way ANOVA</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta50_92" class="block iDevice_content">
+<p>First, read the results data into a dataframe.  The data are in the file <em>results.csv</em> on the website http://www.ucl.ac.uk/~ccaajim.</p>
+<p>Next, generate a new variable <strong>avxm</strong> which holds the average of the three exam scores <em>maths</em>, <em>english</em>,<em> history</em>.</p>
+<p>Explore the <em>avxm</em> variable split by class and create box plots of <em>avxm</em> split by class.</p>
+<p>Check the variances of the <em>avxm</em> scores by <em>class</em>.</p>
+<p>Carryout an ANOVA to compare the mean <em>avxm</em> scores by class.  If the result of the ANOVA indicates significant differences, carry out Tukey's Honest Significant Differences test to find out where the pairwise differences lie.</p>
+</div>
+<form name="feedback-form-50" action="#" onsubmit="return false" class="feedback-form">
+<div class="block iDevice_buttons feedback-button js-required">
+<p><input type="button" name="toggle-feedback-50" value="Show Feedback" class="feedbackbutton" onclick="$exe.toggleFeedback(this,true);return false" /></p>
+</div>
+<section id="feedback-50" class="feedback js-feedback js-hidden">
+<h1 class="js-sr-av">Feedback</h1>
+<div id="ta50_93" class="block iDevice_content">
+<p>resultsdf&lt;-read.csv("http://www.ucl.ac.uk/~ccaajim/results.csv", header = TRUE, sep=",")</p>
+<p>tapply(avxm,class,summary)</p>
+<p>by(avxm,class,summary)</p>
+<p>boxplot(avxm~class)</p>
+<p>bartlett.test(avxm,class)</p>
+<p>model&lt;-aov(avxm~class)</p>
+<p>summary(model)</p>
+<p>TukeyHSD(model)</p>
+</div>
+</section>
+</form>
+</div>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="the_paired_ttest.html" class="prev"><span>&laquo; </span>Previous</a> | <a href="regression.html" class="next"> Next<span> &raquo;</span></a>
+</nav>
+</div>
+</div>
+</body></html>
